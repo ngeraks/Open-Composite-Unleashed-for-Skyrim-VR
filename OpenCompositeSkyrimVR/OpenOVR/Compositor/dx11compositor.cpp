@@ -3345,6 +3345,11 @@ void DX11Compositor::BeginVRSGameFrame()
 	XrTime effectGazeSampleTime = 0;
 	float nextCenterX[2] = { s_vrsOpticalX[0], s_vrsOpticalX[1] };
 	float nextCenterY[2] = { s_vrsOpticalY[0], s_vrsOpticalY[1] };
+	//Inherit Eye Tracking settings
+	const bool inheritEyePipeline =
+    oovr_global_configuration.VrsInheritEyeTracked() &&
+    oovr_global_configuration.VrsFixedEnabled();
+	const bool useEyePipeline = oovr_global_configuration.VrsEyeTracked() || inheritEyePipeline;
 	if (oovr_global_configuration.VrsEyeTracked()) {
 		if (BaseInput* input = GetUnsafeBaseInput()) {
 			XrVector3f gazeDirection{};
@@ -3398,9 +3403,20 @@ void DX11Compositor::BeginVRSGameFrame()
 		}
 	}
 
+	// const auto vrsMode = ocu_vrs_gaze::SelectMode(
+	    // oovr_global_configuration.VrsEyeTracked(),
+	    // oovr_global_configuration.VrsFixedEnabled(), gazeUsed, false);
+	// In inherit mode the tracker was never queried, so gazeUsed is still
+	// false. SelectMode would then pick Fixed and we'd lose every inherited
+	// setting. Force the eye path — nextCenterX/Y already hold the optical
+	// center, which is exactly the "fixed center" we want.
+	if (inheritEyePipeline && !gazeUsed)
+		gazeUsed = true;
+
 	const auto vrsMode = ocu_vrs_gaze::SelectMode(
-	    oovr_global_configuration.VrsEyeTracked(),
+	    useEyePipeline,
 	    oovr_global_configuration.VrsFixedEnabled(), gazeUsed, false);
+
 	if (vrsMode != ocu_vrs_gaze::Mode::EyeTracked)
 		s_vrsHasSmoothedGaze = false;
 
@@ -3545,7 +3561,8 @@ void DX11Compositor::BeginVRSGameFrame()
 	static int s_lastBackend = -1;
 	ocu_foveation::BlackoutFrame blackout;
 	const auto prepareBlackout = [&](int leftWidth, int leftHeight, int rightWidth, int rightHeight) {
-		if (!oovr_global_configuration.VrsEyeBlackoutCull() ||
+		if (inheritEyePipeline ||
+			!oovr_global_configuration.VrsEyeBlackoutCull() ||
 		    !oovr_global_configuration.VrsEyeAnyBlackout() ||
 		    vrsMode != ocu_vrs_gaze::Mode::EyeTracked || s_blackoutPresentationFailed ||
 		    !s_blackoutRenderer.Initialize(device)) return;

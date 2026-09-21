@@ -101,6 +101,7 @@ namespace OpenCompositeConfigurator
 
         // VRS controls
         private CheckBox _chkVrsFixedEnabled = null!;
+        private CheckBox _chkVrsInheritEyeTracked = null!;
         private CheckBox _chkVrsEyeTracked = null!;
         private CheckBox _chkFoveationDebugRings = null!;
 		private ComboBox _cboFoveatedBackend = null!;
@@ -467,6 +468,8 @@ namespace OpenCompositeConfigurator
             LoadDefaultKeyBindings();
             ApplyCurrentGamePaths();
             ModernUiTheme.Apply(this);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             SwitchTab(0);
             WireDirtyTracking(this);   // subscribe AFTER initial population so loading never marks dirty
             // These two live on the Gestures tab but are global INI settings;
@@ -5969,6 +5972,15 @@ namespace OpenCompositeConfigurator
                 "Keeps a fixed high-detail region when gaze tracking is unavailable or disabled. Use it on headsets without eye tracking, " +
                 "such as Meta Quest 3, or as a fallback if eye tracking drops out. Uses the selected backend: NVIDIA VRS or Density Mask.");
             y += 48;
+            _chkVrsInheritEyeTracked = MakeCheckBox( "Inherit eye-tracking settings", leftMargin + 20, y);
+            container.Controls.Add(_chkVrsInheritEyeTracked);
+            foveationTips.SetToolTip(_chkVrsInheritEyeTracked,
+                "Uses the eye-tracking foveation pipeline with the gaze pinned to view center. " +
+                "Radii, rates, backend, geometry, masks and blackout all come from the eye settings. " +
+                "The fixed preset and compatibility controls below are ignored while this is on.");
+            _chkVrsInheritEyeTracked.CheckedChanged += (_, _) => { UpdateFoveationControls(); CheckPotatoMode(); };
+            y += 24;
+
             container.Controls.Add(MakeLabel("Profile", leftMargin + 20, y, 140));
             container.Controls.Add(MakeLabel("Size preset", leftMargin + 180, y, 130));
             container.Controls.Add(MakeLabel("Center size", leftMargin + 345, y, 115));
@@ -6062,6 +6074,11 @@ namespace OpenCompositeConfigurator
         {
             // Eye settings are edited in the popup; fixed fallback stays on Video.
             if (_nudVrsEyeMidRadius == null || _chkVrsCompatibilityMode == null || _chkFoveationDebugRings == null || _updatingVrsPreset) return;
+            bool inherit = _chkVrsInheritEyeTracked?.Checked == true && _chkVrsFixedEnabled.Checked;
+            _cboVrsPreset.Enabled = !inherit;
+            _nudVrsInnerRadius.Enabled = !inherit;
+            _nudVrsMidRadius.Enabled = !inherit && !_chkVrsCompatibilityMode.Checked;
+            _chkVrsCompatibilityMode.Enabled = !inherit;
             _nudVrsMidRadius.Enabled = !_chkVrsCompatibilityMode.Checked;
             bool custom = _chkVrsEyeCustomRates?.Checked == true;
             _nudVrsEyeMidRadius.Enabled = true;
@@ -7828,6 +7845,8 @@ namespace OpenCompositeConfigurator
 
             // Cross-vendor foveated rendering settings
             _chkVrsFixedEnabled.Checked = ParseBool(_ini.Get("", "vrsEnabled", "false"));
+            _chkVrsInheritEyeTracked.Checked = ParseBool(_ini.Get("", "vrsInheritEyeTracked", "false"));  
+
             _updatingVrsPreset = true;
             try
             {
@@ -8061,6 +8080,7 @@ namespace OpenCompositeConfigurator
 
             // Cross-vendor foveated rendering settings
             _ini.Set("", "vrsEnabled", _chkVrsFixedEnabled.Checked ? "true" : "false");
+            _ini.Set("", "vrsInheritEyeTracked", _chkVrsInheritEyeTracked.Checked ? "true" : "false");
             CaptureEyeFoveationSettings().Write(_ini);
             FoveationProfiles.Write(_ini, false, new(_nudVrsInnerRadius.Value, _nudVrsMidRadius.Value));
             // Independent profiles supersede the old shared radii after migration.

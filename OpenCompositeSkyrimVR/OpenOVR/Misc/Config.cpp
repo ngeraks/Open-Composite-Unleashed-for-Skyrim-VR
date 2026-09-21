@@ -387,6 +387,7 @@ int Config::ini_handler(void* user, const char* pSection,
 		CFGOPT(float, fsr3MipBiasOffset);
 		CFGOPT(bool, vrsEnabled);
 		CFGOPT(bool, vrsEyeTracked);
+		CFGOPT(bool, vrsInheritEyeTracked);
 		CFGOPT(bool, foveationDebugRings);
 		CFGOPT(string, foveatedBackend);
 		CFGOPT(float, vrsInnerRadius);

@@ -205,6 +205,7 @@ namespace OpenCompositeConfigurator
 
             ["vrsEnabled"] = "vrs",
             ["vrsEyeTracked"] = "vrs",
+            ["vrsInheritEyeTracked"] = "vrs",
             ["foveationDebugRings"] = "vrs",
             ["vrsInnerRadius"] = "vrs",
             ["vrsMidRadius"] = "vrs",

@@ -241,6 +241,7 @@ public:
 	inline bool VrsEnabled() const { return vrsEnabled; }
 	inline bool VrsFixedEnabled() const { return vrsEnabled; }
 	inline bool VrsEyeTracked() const { return vrsEyeTracked; }
+	inline bool VrsInheritEyeTracked() const { return vrsInheritEyeTracked; }
 	float VrsEyeHorizontalScale() const { return ocu_foveation::HorizontalScale(vrsEyeHorizontalScale); }
 	float VrsEyeHorizontalOffset() const { return ocu_foveation::CenterOffset(vrsEyeHorizontalOffset); }
 	float VrsEyeVerticalOffset() const { return ocu_foveation::CenterOffset(vrsEyeVerticalOffset); }
@@ -479,6 +480,7 @@ private:
 	// Cross-vendor foveated rendering
 	bool vrsEnabled = false;   // explicit fixed-center mode (legacy key name)
 	bool vrsEyeTracked = true; // Auto gaze only; no implicit fixed fallback
+	bool vrsInheritEyeTracked = false;   
 	float vrsEyeHorizontalScale = 1.f;
 	float vrsEyeHorizontalOffset = 0.f;
 	float vrsEyeVerticalOffset = 0.f;

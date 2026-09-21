@@ -1,0 +1,88 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenCompositeSkyrimVR", "OpenCompositeSkyrimVR", "{DA049062-01DE-0D26-4403-88AB86A021BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCompositeConfigurator", "OpenCompositeSkyrimVR\OC Unleashed Configurator\OpenCompositeConfigurator.csproj", "{D4381370-8B12-A2CF-FE6E-AC016B02355F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCUKeyboardStudio", "OpenCompositeSkyrimVR\OCU Keyboard Studio\OCUKeyboardStudio.csproj", "{051DC021-E144-F87A-D339-FC60CC1968A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuntimeSwitcher", "OpenCompositeSkyrimVR\RuntimeSwitcher\RuntimeSwitcher.csproj", "{839ECE83-52D5-FB75-162D-F0A6F6D7F704}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{47388BE7-67EA-A782-BAA6-D14AA0F6374A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfiguratorBindings", "OpenCompositeSkyrimVR\tests\ConfiguratorBindings\ConfiguratorBindings.csproj", "{D1C5491D-2712-34FE-6E35-CEC6556FEB33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfiguratorCleanup", "OpenCompositeSkyrimVR\tests\ConfiguratorCleanup\ConfiguratorCleanup.csproj", "{7AA33D3A-C044-8EA4-167D-341AB453F043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfiguratorDapa", "OpenCompositeSkyrimVR\tests\ConfiguratorDapa\ConfiguratorDapa.csproj", "{9D9D59F5-89F6-B9AB-A990-DA6D81E9F83D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfiguratorFoveation", "OpenCompositeSkyrimVR\tests\ConfiguratorFoveation\ConfiguratorFoveation.csproj", "{B2F93439-A92A-1D1C-A954-F4D1FF01E70C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfiguratorLogging", "OpenCompositeSkyrimVR\tests\ConfiguratorLogging\ConfiguratorLogging.csproj", "{9A7E7155-AC93-2831-07C6-61F88AD27C17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfiguratorTreadmill", "OpenCompositeSkyrimVR\tests\ConfiguratorTreadmill\ConfiguratorTreadmill.csproj", "{0449C8B8-9322-4F59-C2B8-0670A327C1DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4381370-8B12-A2CF-FE6E-AC016B02355F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4381370-8B12-A2CF-FE6E-AC016B02355F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4381370-8B12-A2CF-FE6E-AC016B02355F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4381370-8B12-A2CF-FE6E-AC016B02355F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{051DC021-E144-F87A-D339-FC60CC1968A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{051DC021-E144-F87A-D339-FC60CC1968A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{051DC021-E144-F87A-D339-FC60CC1968A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{051DC021-E144-F87A-D339-FC60CC1968A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{839ECE83-52D5-FB75-162D-F0A6F6D7F704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{839ECE83-52D5-FB75-162D-F0A6F6D7F704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{839ECE83-52D5-FB75-162D-F0A6F6D7F704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{839ECE83-52D5-FB75-162D-F0A6F6D7F704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1C5491D-2712-34FE-6E35-CEC6556FEB33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1C5491D-2712-34FE-6E35-CEC6556FEB33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1C5491D-2712-34FE-6E35-CEC6556FEB33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1C5491D-2712-34FE-6E35-CEC6556FEB33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AA33D3A-C044-8EA4-167D-341AB453F043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AA33D3A-C044-8EA4-167D-341AB453F043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AA33D3A-C044-8EA4-167D-341AB453F043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AA33D3A-C044-8EA4-167D-341AB453F043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D9D59F5-89F6-B9AB-A990-DA6D81E9F83D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D9D59F5-89F6-B9AB-A990-DA6D81E9F83D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D9D59F5-89F6-B9AB-A990-DA6D81E9F83D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D9D59F5-89F6-B9AB-A990-DA6D81E9F83D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2F93439-A92A-1D1C-A954-F4D1FF01E70C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2F93439-A92A-1D1C-A954-F4D1FF01E70C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2F93439-A92A-1D1C-A954-F4D1FF01E70C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2F93439-A92A-1D1C-A954-F4D1FF01E70C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A7E7155-AC93-2831-07C6-61F88AD27C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A7E7155-AC93-2831-07C6-61F88AD27C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A7E7155-AC93-2831-07C6-61F88AD27C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A7E7155-AC93-2831-07C6-61F88AD27C17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0449C8B8-9322-4F59-C2B8-0670A327C1DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0449C8B8-9322-4F59-C2B8-0670A327C1DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0449C8B8-9322-4F59-C2B8-0670A327C1DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0449C8B8-9322-4F59-C2B8-0670A327C1DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D4381370-8B12-A2CF-FE6E-AC016B02355F} = {DA049062-01DE-0D26-4403-88AB86A021BC}
+		{051DC021-E144-F87A-D339-FC60CC1968A5} = {DA049062-01DE-0D26-4403-88AB86A021BC}
+		{839ECE83-52D5-FB75-162D-F0A6F6D7F704} = {DA049062-01DE-0D26-4403-88AB86A021BC}
+		{47388BE7-67EA-A782-BAA6-D14AA0F6374A} = {DA049062-01DE-0D26-4403-88AB86A021BC}
+		{D1C5491D-2712-34FE-6E35-CEC6556FEB33} = {47388BE7-67EA-A782-BAA6-D14AA0F6374A}
+		{7AA33D3A-C044-8EA4-167D-341AB453F043} = {47388BE7-67EA-A782-BAA6-D14AA0F6374A}
+		{9D9D59F5-89F6-B9AB-A990-DA6D81E9F83D} = {47388BE7-67EA-A782-BAA6-D14AA0F6374A}
+		{B2F93439-A92A-1D1C-A954-F4D1FF01E70C} = {47388BE7-67EA-A782-BAA6-D14AA0F6374A}
+		{9A7E7155-AC93-2831-07C6-61F88AD27C17} = {47388BE7-67EA-A782-BAA6-D14AA0F6374A}
+		{0449C8B8-9322-4F59-C2B8-0670A327C1DA} = {47388BE7-67EA-A782-BAA6-D14AA0F6374A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8396DA0-2A64-4569-82CE-2417E91549E4}
+	EndGlobalSection
+EndGlobal
